@@ -11,9 +11,8 @@ public:
 
 	player(bool is_white);
 
-	std::string select_piece();
-	std::string select_move();
+	std::string select_location();
 
-	int convert_x(std::string x[0]);
-	int convert_y(std::string y[1]);
+	int convert_x(std::string x);
+	int convert_y(std::string y);
 };

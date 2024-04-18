@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include "chess_piece.h"
 
 
 class chess_board {
@@ -26,7 +26,7 @@ public:
 
 	void initBoard();
 
-	chess_piece find_chess_piece(int posx, int posy) const;
+	chess_piece& find_chess_piece(int posx, int posy) const;
 
 
 };
