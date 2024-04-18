@@ -19,7 +19,6 @@ public:
 
 	};
 
-
 	chess_board();
 	
 	void display_board();
