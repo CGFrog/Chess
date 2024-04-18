@@ -28,10 +28,10 @@ char chess_piece::get_symbol() const {
 void chess_piece::set_in_danger(bool in_danger) {
 	this -> in_danger = in_danger;
 }
-void chess_piece::set_posx(int posx) {
+void chess_piece::set_posx(int& posx) {
 	this->posx = posx;
 }
-void chess_piece::set_posyx(int posy) {
+void chess_piece::set_posyx(int& posy) {
 	this->posy = posy;
 }
 

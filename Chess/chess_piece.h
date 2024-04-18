@@ -19,8 +19,8 @@ public:
 	char get_symbol() const;
 
 	void set_in_danger(bool in_danger);
-	void set_posx(int posx);
-	void set_posyx(int posy);
+	void set_posx(int& posx);
+	void set_posyx(int& posy);
 
 
 

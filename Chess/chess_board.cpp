@@ -8,25 +8,23 @@ chess_board::chess_board() {
 }
 
 void chess_board::display_board() {
-	for (int i = 0; i < 8; i++)
+	for (int y = 0; y < 8; y++)
 	{
-		std::cout << 8 - i;
-		for (int j = 0; j < 8; j++)
+		std::cout << 8 - y;
+		for (int x = 0; x < 8; x++)
 		{
-			std::cout << chess_board_array[i][j] << " ";
+			std::cout << chess_board_array[y][x] << " ";
 		}
 		std::cout << std::endl;
 	}
 	std::cout << ' ';
-	for (int i = 0; i < 8; i++) {
-		char x_axis = 'A' + i;
+	for (int x = 0; x < 8; x++) {
+		char x_axis = 'A' + x;
 		std::cout << x_axis << ' ';
 	}
 }
 
 void chess_board::initBoard() {
 	display_board();
-
-
 
 }
