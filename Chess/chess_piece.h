@@ -9,7 +9,7 @@ public:
 	int pos[2] = {};
 	char symbol;
 
-	chess_piece(bool white, int pos[], char symbol);
+	chess_piece(bool white, int posx, int posy, char symbol);
 
 };
 
