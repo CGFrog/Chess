@@ -26,4 +26,7 @@ public:
 
 	void initBoard();
 
+	chess_piece find_chess_piece(int posx, int posy) const;
+
+
 };
