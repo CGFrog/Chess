@@ -1,9 +1,5 @@
-class player {
+#include "player.h"
 
-public:
+player::player() {
 
-
-	player();
-
-
-};
+}
