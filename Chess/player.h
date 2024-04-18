@@ -12,7 +12,7 @@ public:
 	player(bool is_white);
 
 	std::string select_location();
-
+	bool is_valid_input(std::string input);
 	int convert_x(std::string x);
 	int convert_y(std::string y);
 };
