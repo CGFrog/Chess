@@ -4,7 +4,10 @@
 
 chess_board::chess_board() {
 
+}
 
+void chess_board::starting_positions() {
+	
 }
 
 void chess_board::display_board() {
