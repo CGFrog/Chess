@@ -4,29 +4,29 @@
 class chess_piece {
 
 	bool in_danger = false;
+	bool has_moved = false; // Only relevant for pawns, kings, and rooks
 	bool is_white;
-	int posx;
-	int posy;
+	int pos_x;
+	int pos_y;
 	char symbol;
-
+	
+	//P = Pawn, Q = Queen, K = King, N = Knight, R = Rook, B = Bishop
 
 public:
 
 	bool get_in_danger() const;
 	bool get_is_white() const;
-	int get_posx() const;
-	int get_posy() const;
+	int get_pos_x() const;
+	int get_pos_y() const;
 	char get_symbol() const;
 
 	void set_in_danger(bool in_danger);
-	void set_posx(int& posx);
-	void set_posyx(int& posy);
+	void set_pos_x(int& pos_x);
+	void set_pos_y(int& pos_y);
 
+	chess_piece(bool white, int pos_x, int pos_y, char symbol);
 
-
-	chess_piece(bool white, int posx, int posy, char symbol);
-
-	void move_piece(int posx, int posy, std::string next_pos);
+	void move_piece(int pos_x, int pos_y, std::string next_pos);
 
 };
 

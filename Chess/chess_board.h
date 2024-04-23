@@ -19,28 +19,17 @@ public:
 	'_','_','_','_','_','_','_','_',
 	'_','_','_','_','_','_','_','_',
 	};
-	
-	chess_piece* places[8][8]{
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-		NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-	};
+
+
 
 	void starting_positions();
 
+	void set_piece(int x, int y, char symb, char(&arr)[8][8]);
 
-	chess_board();
+	chess_board(bool whites_turn);
 	
-	void display_board();
+	void display_board() const;
 
 	void initBoard();
 
-	chess_piece& find_chess_piece(int posx, int posy) const;
-	
-	//https://cplusplus.com/forum/general/2710/
 };

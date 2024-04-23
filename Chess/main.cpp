@@ -1,11 +1,8 @@
-#include <iostream>
-#include <vector>
 #include "chess_board.h"
-#include "chess_piece.h"
 
 int main() {
 
-	chess_board board;
+	chess_board board(true);
 	board.initBoard();
 	return 0;
 }

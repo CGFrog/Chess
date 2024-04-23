@@ -1,10 +1,12 @@
 #include "chess_piece.h"
+#include <vector>
+
 
 chess_piece::chess_piece(bool is_white, int posx, int posy, char symbol) {
 	this->is_white = is_white;
 	this->symbol = symbol;
-	this->posx = posx;
-	this->posy = posy;
+	set_pos_x(pos_x);
+	set_pos_y(pos_y);
 }
 //GETTERS
 bool chess_piece::get_in_danger() const {
@@ -14,11 +16,11 @@ bool chess_piece::get_is_white() const {
 	return is_white;
 
 }
-int chess_piece::get_posx() const {
-	return posx;
+int chess_piece::get_pos_x() const {
+	return pos_x;
 }
-int chess_piece::get_posy() const {
-	return posy;
+int chess_piece::get_pos_y() const {
+	return pos_y;
 }
 char chess_piece::get_symbol() const {
 	return symbol;
@@ -28,10 +30,10 @@ char chess_piece::get_symbol() const {
 void chess_piece::set_in_danger(bool in_danger) {
 	this -> in_danger = in_danger;
 }
-void chess_piece::set_posx(int& posx) {
-	this->posx = posx;
+void chess_piece::set_pos_x(int& pos_x) {
+	this->pos_x = pos_x;
 }
-void chess_piece::set_posyx(int& posy) {
-	this->posy = posy;
+void chess_piece::set_pos_y(int& pos_y) {
+	this->pos_y = pos_y;
 }
 
