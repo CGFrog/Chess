@@ -2,7 +2,7 @@
 #include <vector>
 
 
-chess_piece::chess_piece(bool is_white, int posx, int posy, char symbol) {
+chess_piece::chess_piece(bool is_white, int pos_x, int pos_y, char symbol) {
 	this->is_white = is_white;
 	this->symbol = symbol;
 	set_pos_x(pos_x);
