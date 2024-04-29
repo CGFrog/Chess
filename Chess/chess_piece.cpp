@@ -1,6 +1,4 @@
 #include "chess_piece.h"
-#include <vector>
-
 
 chess_piece::chess_piece(bool is_white, int pos_x, int pos_y, char symbol) {
 	this->is_white = is_white;
@@ -11,6 +9,9 @@ chess_piece::chess_piece(bool is_white, int pos_x, int pos_y, char symbol) {
 //GETTERS
 bool chess_piece::get_in_danger() const {
 	return in_danger;
+}
+bool chess_piece::get_has_moved() const {
+	return has_moved;
 }
 bool chess_piece::get_is_white() const {
 	return is_white;
@@ -35,5 +36,8 @@ void chess_piece::set_pos_x(int& pos_x) {
 }
 void chess_piece::set_pos_y(int& pos_y) {
 	this->pos_y = pos_y;
+}
+void chess_piece::set_has_moved(bool has_moved) {
+	this->has_moved = has_moved;
 }
 

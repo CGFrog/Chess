@@ -1,10 +1,12 @@
 #include "chess_board.h"
 
 int main() {
-	chess_board board(true);
+	bool quit = false;
+	
+	chess_board board(false);
 	board.initBoard();
-
-	//while(gaming)
-
+	while (!quit) {
+		board.next_turn(quit);
+	}
 	return 0;
 }
