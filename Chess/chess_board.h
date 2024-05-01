@@ -18,7 +18,7 @@ public:
 	int convert_coord_x(char coord);
 	int convert_coord_y(char coord);
 	void next_turn(bool& quit);
-	bool attack_square(int i, int next_x, int next_y) const;
+	bool attack_square(int next_x, int next_y);
 	void resign();
 	void display_board_white() const;
 	void display_board_black() const;

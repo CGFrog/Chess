@@ -1,6 +1,12 @@
 #include "chess_board.h"
 #include <iostream>
 #include "windows.h"
+#include "pawn.h"
+#include "queen.h"
+#include "knight.h"
+#include "king.h"
+#include "bishop.h"
+#include "rook.h"
 
 //Is there a cleaner way of creating/storing these
 //without them being outside of a function or data structure?
@@ -11,38 +17,38 @@
 std::vector <char> white_score;
 std::vector <char> black_score;
 
-chess_piece w_pawnA1(true, 0, 6, 'P');
-chess_piece w_pawnB1(true, 1, 6, 'P');
-chess_piece w_pawnC1(true, 2, 6, 'P');
-chess_piece w_pawnD1(true, 3, 6, 'P');
-chess_piece w_pawnE1(true, 4, 6, 'P');
-chess_piece w_pawnF1(true, 5, 6, 'P');
-chess_piece w_pawnG1(true, 6, 6, 'P');
-chess_piece w_pawnH1(true, 7, 6, 'P');
-chess_piece w_rookA0(true, 0, 7, 'R');
-chess_piece w_rookH0(true, 7, 7, 'R');
-chess_piece w_queen(true, 3, 7, 'Q');
-chess_piece w_king(true, 4, 7, 'K');
-chess_piece w_knightB0(true, 6, 7, 'N');
-chess_piece w_knightG0(true, 1, 7, 'N');
-chess_piece w_bishopF0(true, 2, 7, 'B');
-chess_piece w_bishopC0(true, 5, 7, 'B');
-chess_piece b_pawnA7(false, 0, 1, 'p');
-chess_piece b_pawnB7(false, 1, 1, 'p');
-chess_piece b_pawnC7(false, 2, 1, 'p');
-chess_piece b_pawnD7(false, 3, 1, 'p');
-chess_piece b_pawnE7(false, 4, 1, 'p');
-chess_piece b_pawnF7(false, 5, 1, 'p');
-chess_piece b_pawnG7(false, 6, 1, 'p');
-chess_piece b_pawnH7(false, 7, 1, 'p');
-chess_piece b_rookA8(false, 0, 0, 'r');
-chess_piece b_rookH8(false, 7, 0, 'r');
-chess_piece b_queen(false, 3, 0, 'q');
-chess_piece b_king(false, 4, 0, 'k');
-chess_piece b_knightB8(false, 6, 0, 'n');
-chess_piece b_knightG8(false, 1, 0, 'n');
-chess_piece b_bishopF8(false, 2, 0, 'b');
-chess_piece b_bishopC8(false, 5, 0, 'b');
+pawn w_pawnA1(true, 0, 6, 'P');
+pawn w_pawnB1(true, 1, 6, 'P');
+pawn w_pawnC1(true, 2, 6, 'P');
+pawn w_pawnD1(true, 3, 6, 'P');
+pawn w_pawnE1(true, 4, 6, 'P');
+pawn w_pawnF1(true, 5, 6, 'P');
+pawn w_pawnG1(true, 6, 6, 'P');
+pawn w_pawnH1(true, 7, 6, 'P');
+rook w_rookA0(true, 0, 7, 'R');
+rook w_rookH0(true, 7, 7, 'R');
+queen w_queen(true, 3, 7, 'Q');
+king w_king(true, 4, 7, 'K');
+knight w_knightB0(true, 6, 7, 'N');
+knight w_knightG0(true, 1, 7, 'N');
+bishop w_bishopF0(true, 2, 7, 'B');
+bishop w_bishopC0(true, 5, 7, 'B');
+pawn b_pawnA7(false, 0, 1, 'p');
+pawn b_pawnB7(false, 1, 1, 'p');
+pawn b_pawnC7(false, 2, 1, 'p');
+pawn b_pawnD7(false, 3, 1, 'p');
+pawn b_pawnE7(false, 4, 1, 'p');
+pawn b_pawnF7(false, 5, 1, 'p');
+pawn b_pawnG7(false, 6, 1, 'p');
+pawn b_pawnH7(false, 7, 1, 'p');
+rook b_rookA8(false, 0, 0, 'r');
+rook b_rookH8(false, 7, 0, 'r');
+queen b_queen(false, 3, 0, 'q');
+king b_king(false, 4, 0, 'k');
+knight b_knightB8(false, 6, 0, 'n');
+knight b_knightG8(false, 1, 0, 'n');
+bishop b_bishopF8(false, 2, 0, 'b');
+bishop b_bishopC8(false, 5, 0, 'b');
 
 std::vector <chess_piece*> piece_vec;
 std::vector<std::vector<char>> chess_board_vector = {
@@ -169,9 +175,7 @@ void chess_board::display_board_white() const{
 	}
 	std::cout << std::endl << std::endl;
 	reset_color();
-
 	std::cout << "It is whites turn" << std::endl;
-
 	std::cout << "Select piece to move & location \"E2 E4\" or type \"resign\"" << std::endl;
 	score_board();
 }
@@ -232,6 +236,7 @@ void chess_board::resign() {
 	}
 	std::cout << "Black has resigned, White wins." << std::endl;
 }
+
 std::string chess_board::get_coordinate() {
 	std::string coordinate;
 	std::getline(std::cin, coordinate);
@@ -249,8 +254,8 @@ int chess_board::convert_coord_x(char coord) {
 int chess_board::convert_coord_y(char coord) {
 	return abs(coord - 56);
 }
-void chess_board::move_piece(bool& quit) { // If time, trim down this function.
 
+void chess_board::move_piece(bool& quit) { // If time, trim down this function.
 	std::string coordinates = get_coordinate();
 	if (coordinates == "resign") {
 		quit = true;
@@ -272,25 +277,35 @@ void chess_board::move_piece(bool& quit) { // If time, trim down this function.
 	int next_y = convert_coord_y(coordinates[4]);
 
 	for (int i = 0; i < piece_vec.size(); i++) {
-		if (piece_vec[i]->get_pos_x() == select_x && piece_vec[i]->get_pos_y() == select_y) {
+		if ((*piece_vec[i]).get_pos_x() == select_x && (*piece_vec[i]).get_pos_y() == select_y) {
 			if((*piece_vec[i]).get_is_white() != whites_turn){
 				std::cout << "That piece belongs to the other team" << std::endl;
 				move_piece(quit);
 				return;
 			}
+			if (!(piece_vec[i])->legal_move(next_x, next_y, piece_vec, chess_board_vector)) {
+				std::cout << "Illegal Move" << std::endl;
+				move_piece(quit);
+				return;
+			}
+
 			else if ((*piece_vec[i]).get_is_white() == whites_turn) {
-				if (!attack_square(i, next_x, next_y)) {
+				if (!attack_square(next_x, next_y)) {
 					move_piece(quit);
 					return;
 				}
-				//if (!(*piece_vec[i]).legal_move(next_x, next_y, piece_vec)) {
-				//	move_piece(quit);
-				//	return;
-				//}
-				(*piece_vec[i]).set_pos_x(next_x);
-				(*piece_vec[i]).set_pos_y(next_y);
-				(*piece_vec[i]).set_has_moved(true);
-				return;
+				//Too much nesting make this a function and use it for the top for-loop as well.
+				//Try to do this without this for-loop, keep size of vector some way
+				//Push element to end of vector then set a variable to subtract from the indexed range of vector
+				//It will maintain size but exclude captured pieces
+				for (int j = 0; j < piece_vec.size(); j++) {
+					if ((*piece_vec[j]).get_pos_x() == select_x && (*piece_vec[j]).get_pos_y() == select_y) {
+						(*piece_vec[j]).set_pos_x(next_x);
+						(*piece_vec[j]).set_pos_y(next_y);
+						(*piece_vec[j]).set_has_moved(true);
+						return;
+					}
+				}
 			}
 			//If time, change vector of classes to a matrix with NULL pointers for O(1) time.
 		}
@@ -299,12 +314,12 @@ void chess_board::move_piece(bool& quit) { // If time, trim down this function.
 	move_piece(quit);
 	return;
 }
-bool chess_board::attack_square(int i, int next_x, int next_y) const{
+bool chess_board::attack_square(int next_x, int next_y) {
 	for (int j = 0; j < piece_vec.size(); j++) {
 		if ((piece_vec[j]->get_pos_x() == next_x && piece_vec[j]->get_pos_y() == next_y) && (piece_vec[j]->get_is_white() != whites_turn)) {
 			if (piece_vec[j]->get_is_white())
 				black_score.push_back(piece_vec[j]->get_symbol());
-			else
+			else if (!piece_vec[j]->get_is_white())
 				white_score.push_back(piece_vec[j]->get_symbol());
 			piece_vec.erase(piece_vec.begin() + j);
 			return true;
@@ -332,7 +347,6 @@ void chess_board::score_board() const{
 			std::cout << black_score[i] << ",";
 		}
 	}
-
 	std::cout << std::endl;
 	reset_color();
 }

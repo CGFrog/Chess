@@ -24,11 +24,10 @@ public:
 	void set_pos_x(int& pos_x);
 	void set_pos_y(int& pos_y);
 	void set_has_moved(bool has_moved);
-	bool legal_move(int x, int y, std::vector<chess_piece*>& vector) const;
-
-
+	virtual	bool legal_move(int x, int y, std::vector<chess_piece*>& vector, std::vector<std::vector<char>>& map) const;
 	chess_piece(bool white, int pos_x, int pos_y, char symbol);
 
 	void move_piece(int pos_x, int pos_y, std::string next_pos);
+
 
 };

@@ -127,17 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="king.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="chess_board.cpp" />
     <ClCompile Include="chess_piece.cpp" />
     <ClCompile Include="knight.cpp" />
     <ClCompile Include="pawn.cpp" />
+    <ClCompile Include="queen.cpp" />
+    <ClCompile Include="bishop.cpp" />
+    <ClCompile Include="rook.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bishop.h" />
     <ClInclude Include="chess_board.h" />
     <ClInclude Include="chess_piece.h" />
+    <ClInclude Include="king.h" />
     <ClInclude Include="pawn.h" />
     <ClInclude Include="knight.h" />
+    <ClInclude Include="queen.h" />
+    <ClInclude Include="rook.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

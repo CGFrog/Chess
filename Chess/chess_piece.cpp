@@ -41,3 +41,6 @@ void chess_piece::set_has_moved(bool has_moved) {
 	this->has_moved = has_moved;
 }
 
+bool chess_piece::legal_move(int x, int y, std::vector<chess_piece*>& vector, std::vector<std::vector<char>>& map) const {
+	return false;
+}
